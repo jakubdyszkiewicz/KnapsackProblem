@@ -112,6 +112,7 @@ public class MethodsBenchmark
         {
             System.out.printf("Method: %-5d", i + 1);
             System.out.printf("Found perfect solutions: %4d/%-4d\t", perfectSolutions[i], tests);
+            error[i] /= (double)tests;
             System.out.printf("Average error: %.2f%%\t", error[i] * 100);
             System.out.printf("Max error: %.2f%%\t", maxError[i] * 100);
             averageTime[i] /= (double)tests;
@@ -129,7 +130,7 @@ public class MethodsBenchmark
     {
         KnapsackProblem[] problems = new KnapsackProblem[5];
         for (int i = 0; i < 5; i++)
-            problems[i] = new KnapsackGA((int) (10 * Math.pow(4, i + 1)), 10 * (i + 1), 0.85, 0.1);
+            problems[i] = new KnapsackGA((int) (10 * Math.pow(3, i + 1)), (int) (10 * Math.pow(2, i + 1)), 0.85, 0.1);
         MethodsBenchmark methodsBenchmark = new MethodsBenchmark(new KnapsackDynamic(), problems);
         methodsBenchmark.enablePrintTest(false);
         methodsBenchmark.runTest(10);
